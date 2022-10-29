@@ -1,0 +1,158 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="{% static '/css/cart.css' %}">
+
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+
+    <title>Senbonzakura Kageyoshi</title>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    <!-- {% if user.is_authenticated %} -->
+    <div class="container">
+        <h1 class="h1-title">Shopping Cart</h1>
+        <table>
+            <tr>
+                <th>Product</th>
+                <th width="200px">Quantity</th>
+                <th width="100px">Price</th>
+            </tr>
+            <form action="">
+                {% for item in items %}
+                <tr>
+                    <td>
+                        <div class="cart-info">
+                            <img src="/{{item.product.image}}" alt="{{item.product.title}}">
+                            <div>
+                                <p>{{item.product.title}}</p>
+                                <small>Price:{{item.product.price}}</small>
+                                <br>
+                                <a href="#" data-action="remove">Remove</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <span>{{item.quantity}}</span>
+                        <div class="quantity-div">
+                            <i class="fa-regular fa-triangle"></i>
+                            <i class="fa-sharp fa-solid fa-triangle"></i>
+                            <!-- <img class="quantity-images" src="{% static 'images/up-arrow.svg' %}" alt="up-arrow">
+                            <img class="quantity-images" src="{% static 'images/down-arrow.svg' %}" alt="down-arrow"> -->
+                        </div>
+                    </td>
+                    <td>{{item.get_total}}</td>
+                </tr>
+                {% endfor %}
+                <!-- <tr>
+                <td>
+                    <div class="cart-info">
+                        <img src="{% static 'images/sponge-bob.jpg' %}" alt="sponge-bob">
+                        <div>
+                            <p>Sponge-bob</p>
+                            <small>Price: $59.00</small>
+                            <br>
+                            <a href="#">Remove</a>
+                        </div>
+                    </div>
+                </td>
+                <td><input type="number" value="1"></td>
+                <td>50.00</td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="cart-info">
+                        <img src="{% static 'images/sponge-bob.jpg' %}" alt="sponge-bob">
+                        <div>
+                            <p>Sponge-bob</p>
+                            <small>Price: $59.00</small>
+                            <br>
+                            <a href="#">Remove</a>
+                        </div>
+                    </div>
+                </td>
+                <td><input type="number" value="1"></td>
+                <td>50.00</td>
+            </tr> -->
+        </table>
+        <div class="subtotal-price">
+            <table>
+                <tr>
+                    <td>Subtotal</td>
+                    <td>{{order.get_cart_total}}</td>
+                </tr>
+                <tr>
+                    <td>Tax</td>
+                    <td>$100.00</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>{{subtotal}}</td>
+                </tr>
+            </table>
+        </div>
+        <button type="submit">Purchase</button>
+    </div>
+    </form>
+    <!-- <script>
+        function quantityChange() {
+
+            var url = '/update_item/'
+            var input_value = document.getElementById('product_quantity').value;
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify({ "input_value": input_value })
+            })
+                .then((response) => {
+                    return response.json()
+                })
+
+                .then((data) => {
+                    console.log('data:', data)
+                    location.reload()
+                })
+        }
+    </script>
+    <script>
+        var user = '{{request.user}}'
+        console.log(user)
+
+        function getCookie(user) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, user.length + 1) === (user + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(user.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getCookie('csrftoken');
+    </script> -->
+    <!-- {% else %}
+        <div class="else-div">
+            <h1 class="h1-title">Your Cart is Empty.</h1>
+        </div>
+    {% endif %} -->
+</body>
+
+</html>

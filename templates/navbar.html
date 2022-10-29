@@ -1,0 +1,59 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/navbar.css' %}">
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!-- <form action="{% url 'search-page' %}" method="post">
+    <input type="hidden" value="31" name="deger">
+    {% csrf_token %}
+    <input type="submit" name="gonder" id="gonderr" value="isim">
+
+    </form> -->
+    <!-- <form action="{% url 'search-page' %}" method="post"> -->
+        <header class="navbar-header">
+            <a href="/"><img class="img-logo" src="{% static '/images/lira_gold_logo.png' %}" alt="logo"></a>
+            <nav>
+                <ul class="nav_links">
+                    <li>
+                        <form action="{% url 'search-page' %}" method='post'>
+                            <div class="search-box">
+                                {% csrf_token %}
+                                <input class="search-txt" id="search-txt-id" type="search" name="searched" placeholder="Type to Search">
+                                <a class="search-btn" type="submit" id="search-btn-id" href="/search_page"><i
+                                        class="fa-solid fa-magnifying-glass fa-xl"></i></a>
+                                </div>
+                        </form>
+                    </li>
+                    <!-- <li><a href="/whistlist"><i class="fa-solid fa-heart fa-xl"></a></i></li> -->
+                    <li><a href="/cart"><i class="fa-solid fa-cart-shopping fa-xl"></i><span>{{order.get_cart_items}}</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-caret-down fa-2xl"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="/rings">Rings</a></li>
+                            <li><a href="/bracelets">Bracelets</a></li>
+                            <li><a href="/necklaces">Necklaces</a></li>
+                            <li><a href="/earrings">Earrings</a></li>
+                        </ul>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li><a href="/login"><i class="fa-solid fa-right-to-bracket fa-2xl"></i></a></li>
+                    {% else %}
+                        <li><a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket fa-2xl"></i></a></li>
+                    {% endif %}    
+                </ul>
+                    </nav>
+                    </header>
+    <!-- </form> -->
+    <script>
+        var input = document.getElementById("search-txt-id");
+        input.addEventListener('keypress', function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById('search-btn-id').click();
+            }
+        })
+    </script>
+
+</body>

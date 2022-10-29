@@ -1,0 +1,91 @@
+{% load static %}
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="POST">
+    <div>
+        {% csrf_token %}
+        
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+        </div>
+        <br/>
+        <div class="editable-field">
+            <input class="editable-text" type="text" placeholder="username" name="username" />
+            <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
+        </div>
+        
+        <div class="editable-field">
+            <input class="editable-text" type="password" placeholder="password" name="password"/>
+            <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
+
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css'%}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    <div class="biggiest-container">
+        <div class="container">
+            {% if messages %}
+            <div class="error-message">
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="title">Log In</div>
+            <form action="#" method="post">
+                {% csrf_token %}
+
+                <div class="user-informations">
+                    <div class="input-box">
+                        <span>Username</span>
+                        <input class="editable-text" type="text" placeholder="Username" name="username" />
+                    </div>
+                    <div class="input-box">
+                        <span>Password</span>
+                        <input class="editable-text" type="password" placeholder="Password" name="password" />
+                    </div>
+                </div>
+                <div class="submit-button">
+                    <input type="submit" value="Log In">
+                </div>
+                <div>If you don't have an account, <a href="/register">Click Here!</a></div>
+        </div>
+        </form>
+    </div>
+    </div>
+    <script>
+    </script>
+</body>
+
+</html>

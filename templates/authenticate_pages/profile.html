@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+
+    <title>zanka no tachi</title>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    <div class="biggest-container">
+        <div class="container">
+            <form action="#" method="post">
+                {% csrf_token %}
+                <!-- <div class="image-box">
+                    <img class="image" src="{% static 'images/sponge-bob.jpg' %}" alt="sponge-bob" width="30%">
+                </div> -->
+
+                <div class="user-informations">
+                    <div class="editable-field">
+                        <input class="editable-text" type="text"
+                            value="{{request.user.first_name}} {{request.user.last_name}}" readonly />
+                        <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </div>
+                    <div class="editable-field">
+                        <input class="editable-text" type="text" value="{{request.user}}" readonly />
+                        <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </div>
+                    <div class="editable-field">
+                        <input class="editable-text" type="text" value="{{request.user.email}}" readonly />
+                        <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </div>
+                    <div class="editable-field">
+                        <input class="editable-text" type="text" name="joined day" value="{{request.user.date_joined}}"
+                            readonly />
+                        <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </div>
+                    <div class="editable-field">
+                        <input class="editable-text" type="password" value="{{user_informations.password}}" readonly />
+                        <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                    </div>
+                    <div>
+                        <div class="profile-buttons">
+                            <div class="logout-button">
+                                <a href="{% url 'logout' %}"> Cikis Yap 
+                                    <i class="fa-solid fa-right-from-bracket"></i>
+                                </a>
+                                <a href="/set_password"> Sifre Degistir 
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </a>
+                                <a href="{% url 'logout' %}"> Cikis Yap 
+                                    <i class="fa-solid fa-right-from-bracket"></i>
+                                </a>
+                            </div>
+
+                        </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

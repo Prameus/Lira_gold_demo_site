@@ -1,0 +1,193 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+
+<head>
+    <title>kannom biraki enihime aratame</title>
+
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+
+    <link type="text/css" rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+    <script type="text/javascript" src="{% static 'js/swiper.min.js' %}"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css'%}">
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    {% block content %}
+
+    <div class="swiper mySwiper">
+        <div class="category-header">
+            <h1>bracelets</h1>
+        </div>
+        <div class="swiper-wrapper">
+            {% for product in product_list %}
+            <div class="swiper-slide">
+
+                <div class="slider-box">
+                    <p class="time">New</p>
+                    <div class="slider-image-box">
+                        <img src="{{product.image}}" alt="{{product.title}}">
+                    </div>
+                    <p class="slider-detail">{{product.title}}</p>
+                    <p class="slider-price">{{product.price}}</p>
+
+                    <div class="slider-cart">
+                        <a data-product="{{product.id}}" class="add-to-cart" data-action="add"> Add to Cart </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- <div class="swiper-slide">
+
+                <div class="slider-box">
+                    <p class="time">New</p>
+                    <div class="slider-image-box">
+                        <img src="{% static 'images/sponge-bob.jpg' %}" alt="">
+                    </div>
+                    <p class="slider-detail">Black ladies bags collections</p>
+                    <p class="slider-price">30$</p>
+
+                    <div class="slider-cart">
+                        <a href="#">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+
+                <div class="slider-box">
+                    <p class="time">New</p>
+                    <div class="slider-image-box">
+                        <img src="{% static 'images/sponge-bob.jpg' %}" alt="">
+                    </div>
+                    <p class="slider-detail">Black ladies bags collections</p>
+                    <p class="slider-price">30$</p>
+
+                    <div class="slider-cart">
+                        <a href="#">Add to cart</a>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="category-header">
+        <h1>all products</h1>
+    </div>
+    <div class="page-container">
+        <div class="container">
+            {% for product in product_list %}
+            <div class="card">
+                <div class="image">
+                    <img src="{{product.image}}" alt="{{product.title}}" width="90%">
+                    <ul class="action">
+                        <li>
+                            <a class="add-to-cart" data-product="{{product.id}}" data-action="add">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span>Add to Cart</span></a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-heart"></i>
+                            <span>Add to Wishlist</span>
+                        </li>
+                        <li>
+                            <a href="#divOne" class="show-info">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <span>Get Info</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                <div class="overlay" id="divOne">
+                    <div class="popup-wrapper">
+                        <h2>{{product.title}}</h2>
+                        <a href="#" class="close">&times;</a>
+                        <div class="popup-content">
+                            <div class="popup-container">
+                                <div>
+                                <p>{{product.info}}</p>
+                                <h3>Product Price:{{product.price}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    <!-- <a data-action="add" data-product="{{product.id}}"><i class="fa-solid fa-cart-shopping"></i></a> -->
+                </div>
+                <div class="content">
+                    <div class="product-name">
+                        <h3>{{ product.title }}</h3>
+                    </div>
+                    <div class="product-price">
+                        <h3>{{product.price}}$</h3>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    {% endblock %}
+
+    <footer>
+        <div class="footer-content">
+            <h3>lira kuyumculuk</h3>
+            <p>Lira kuyumclugu tercih ettiginiz icin tesekkur ederiz! Daha fazla bilgi icin bizleri sosyal medya
+                uzerinden takip edebilir, guncel bir sekilde yeni gelen urunlerimizi takip edebilirsiniz.</p>
+            <ul class="footer-socials">
+                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+            </ul>
+        </div>
+        <div class="footer-rights">
+            <p>Tum haklar Lira Kuyumculuk A.S tarafindan saklanmistir</p>
+        </div>
+    </footer>
+
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 4,
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    </script>
+    <script src="{% static 'js/cart.js'%}"></script>
+    <script>
+        var user = '{{request.user}}'
+        console.log(user)
+
+        function getCookie(user) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, user.length + 1) === (user + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(user.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getCookie('csrftoken');
+    </script>
+    <script type="text/javascript">
+        window.addEventListener("scroll",function(){
+            var header = document.querySelector('header');
+            header.classList.toggle('sticky',window.scrollY > 0);
+        }) 
+    </script>
+
+</body>
+
+</html>

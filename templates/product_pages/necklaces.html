@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css'%}">
+
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+
+    <link type="text/css" rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+    <script type="text/javascript" src="{% static 'js/swiper.min.js' %}"></script>
+
+    <title>kannom biraki enihime aratame</title>
+</head>
+
+<body>
+    {% block content %}
+    {% include 'navbar.html' %}
+    <div class="category-header">
+    <h1>Necklaces</h1>
+    </div>
+    <div class="page-container">
+        <div class="container">
+            {% for necklace in necklaces_list %}
+            <div class="card">
+                <div class="image">
+                    <img src="{{ necklace.image }}" alt="{{necklace.title}}" width="90%">
+                    <ul class="action">
+                        <li>
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <button data-product="{{necklace.id}}" data-action="add"><span>Add to Cart</span></button>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-heart"></i>
+                            <span>Add to Wishlist</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-info"></i>
+                            <span>Get Info</span>
+                        </li>
+                    </ul>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                <div class="content">
+                    <div class="product-name">
+                        <h3>{{ necklace.title }}</h3>
+                    </div>
+                    <div class="product-price">
+                        <h3>{{necklace.price}}$</h3>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    {% endblock %}
+
+    <footer>
+        <div class="footer-content">
+            <h3>lira kuyumculuk</h3>
+            <p>Lira kuyumclugu tercih ettiginiz icin tesekkur ederiz! Daha fazla bilgi icin bizleri sosyal medya
+                uzerinden takip edebilir, guncel bir sekilde yeni gelen urunlerimizi takip edebilirsiniz.</p>
+            <ul class="footer-socials">
+                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+            </ul>
+        </div>
+        <div class="footer-rights">
+            <p>Tum haklar Lira Kuyumculuk A.S tarafindan saklanmistir</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+/* 
+li,
+.ul_a {
+    font-weight: 500;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+} */
+
+.navbar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 8%;
+    border-bottom: 2px solid gold;
+    z-index: 1;
+}
+
+header .sticky {
+    padding: 5px 100px;
+    background: #fff;
+}
+
+.img-logo {
+    width: 30%;
+    height: 30%;
+    margin-left: 30px;
+}
+
+.nav_links {
+    list-style: none;
+}
+
+.search-box {
+    border-radius: 40px;
+}
+
+.search-btn {
+    border-radius: 50%;
+    padding-left: 5px;
+    transition: 0.4s;
+}
+
+.search-txt {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 30px;
+    width: 0px;
+    color: #24252A;
+    border-radius: 30px;
+
+}
+
+.nav_links li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav_links li a {
+    color: wheat;
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover {
+    color: gold;
+}
+
+.search-box:hover>.search-txt {
+    width: 300px;
+    padding: 0 6px;
+    background: wheat;
+}
+
+span {
+    position: absolute;
+    background: #ff0000; 
+    color: #fff;
+    vertical-align: top;
+    font-size: 14px;
+    border-radius:9px;
+    margin-left: -3px;
+    top: 22px;
+    
+}
+
+header .logo,
+header .sticky ul li a {
+    color: #edcedc;
+}
+
+.dropdown {
+    position: absolute;
+    /* display: block; */
+    top: 62px;
+    left: 80%;
+    width: 150px;
+    height: 130px;
+    display: none;
+    z-index: 1;
+    background-color: #fff;
+}
+
+.dropdown li {
+    width: 150px;
+    float: none;
+    display: list-item;
+    position: relative;
+}
+
+.dropdown li {
+    border: none outset gold;
+    display: block;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.dropdown li a {
+    color: grey;
+    text-decoration: none;
+}
+
+.nav_links li:hover>.dropdown {
+    transition: all 0.5s ease 0s;
+    display: block;
+}
+
+.dropdown li:hover li {
+    display: block;
+}
+
+
+/* 
+.search-txt:focus>.search-box {
+    width: 300px;
+    padding: 0 6px;
+    cursor: pointer;
+} */
